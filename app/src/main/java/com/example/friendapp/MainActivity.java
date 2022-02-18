@@ -1,9 +1,11 @@
 package com.example.friendapp;
 
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -22,7 +24,7 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     EditText ed1,ed2,ed3,ed4;
-    AppCompatButton b1;
+    AppCompatButton b1,b2;
     String getyn,getfn,getnn,getdyf;
     String apiurl="https://dummyapifriends.herokuapp.com/adddata";
     @Override
@@ -34,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
         ed3=(EditText) findViewById(R.id.nn);
         ed4=(EditText) findViewById(R.id.dyf);
         b1=(AppCompatButton) findViewById(R.id.sub);
+        b2=(AppCompatButton) findViewById(R.id.menu);
+
 
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,6 +85,15 @@ public class MainActivity extends AppCompatActivity {
                 RequestQueue rq= Volley.newRequestQueue(getApplicationContext());
                 rq.add(sr);
 
+
+            }
+
+        });
+        b2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(getApplicationContext(),MenuActivity.class);
+                startActivity(i);
 
             }
         });
